@@ -1,2 +1,4 @@
 # Programming
-general programming tracking
+A repository for all my programming projekts
+
+
