@@ -32,16 +32,17 @@ class Pixel:
 
     dx, dy = 0, 0
     position = ()
+    collider = None
 
     def shift_position(self, key):
         try:
-            if key == "w" and self.position[1] != 1 and key == "w" and self.position[1] < 1:
+            if key == "w" and self.position[1] != 1 and self.position[1] < 1 and self.collider.check_collision(self.position[1] + 0.1):
                 self.dy += 0.1
-            if key == "s"and self.position[1] != -0.9 and key == "s"and self.position[1] > -0.9:
+            if key == "s"and self.position[1] != -0.9 and self.position[1] > -0.9 and self.collider.check_collision(self.position[1] - 0.1):
                 self.dy -= 0.1
-            if key == "a" and self.position[0] != -1 and key == "a" and self.position[0] > -1:
+            if key == "a" and self.position[0] != -1 and self.position[0] > -1 and self.collider.check_collision(self.position[0] - 0.1):
                 self.dx -= 0.1
-            if key == "d" and self.position[0] != 0.9 and key == "d" and self.position[0] < 0.9:
+            if key == "d" and self.position[0] != 0.9 and self.position[0] < 0.9 and self.collider.check_collision(self.position[0] + 0.1):
                 self.dx += 0.1
         except Exception:
             pass
@@ -50,6 +51,7 @@ class Pixel:
         self.Obj["position"] = (-1 + self.dx, -0.9 + self.dy), (-0.9 + self.dx, -0.9 + self.dy), (-1 + self.dx, -1 + self.dy), (-0.9 + self.dx, -1 + self.dy)
 
         self.position = (-1 + self.dx, -0.9 + self.dy)
+
     # ----------------------------------------------
     #             DAMAGE DETECTION
 
@@ -67,6 +69,7 @@ class Pixel:
         red = 1 - green
         self.Obj['color'] = red, green, 0, 1
 
-    def __init__(self):
+    def __init__(self, p_collider):
+        self.collider = p_collider
         self.update_position()
         self.update_color()

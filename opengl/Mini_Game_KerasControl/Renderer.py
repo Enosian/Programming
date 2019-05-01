@@ -13,5 +13,5 @@ Environment = env()
 @window.event
 def on_draw(dt):
     window.clear()
-    player.update_position()
-    player.Obj.draw(gl.GL_TRIANGLE_STRIP)
+    Environment.player.update_position()
+    Environment.player.Obj.draw(gl.GL_TRIANGLE_STRIP)
