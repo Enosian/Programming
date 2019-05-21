@@ -1,4 +1,12 @@
-import keyboard
+# import keyboard
+# import mouse
+import time
+import random
 
-for x in range(100):
-    keyboard.press_and_release('alt+f4, Enter')
+
+def ingame():
+    pass
+
+
+def restart_game():
+    pass
